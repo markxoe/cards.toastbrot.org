@@ -1,0 +1,1 @@
+xcopy * U:\cards.toastbrot.org\ /s /e /y
