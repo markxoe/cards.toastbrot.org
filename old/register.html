@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/toggle-bootstrap-dark.min.css">
+    <link rel="stylesheet" href="/css/toggle-bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <title>Toastbrot Karten</title>
+</head>
+
+<body class="bootstrap">
+
+    <div class="container-fluid">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-auto">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="alert-danger alert">
+                            <strong>Error 1</strong>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <div class="card mb-1">
+                            <div class="card-body">
+                                <h1>Registrierung</h1>
+                                <a>Registriere dich!</a><br>
+                                <a>Du hast schon einen Account?</a><br>
+                                <a href="#">Dann melde dich doch an</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <div class="card mb-1">
+                            <div class="card-body">
+                                <form class="m-0 p-0">
+                                    <div class="form-group">
+                                        <input type="text" name="firstname" placeholder="Name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="lastname" placeholder="Nachname (optional)" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="username" placeholder="Username" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" placeholder="Passwort" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">Registrieren</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-auto">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col">
+                            <div class="card-body">
+                                <a>Registriere dich</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" name="firstname" placeholder="Name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="lastname" placeholder="Nachname (optional)" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="username" placeholder="Username" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" placeholder="Passwort" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">Registrieren</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="fixed-bottom">
+        <footer class="container-fluid p-2 text-center">
+            <a>&copy; 2020 Mark Oude Elberink</a> |
+            <a>Toastbrot.org Karten</a>
+        </footer>
+        <div class="container-fluid p-2 text-center">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    const darkSwitch = document.getElementById('darkSwitch');
+    window.addEventListener('load', () => {
+        if (darkSwitch) {
+            initTheme();
+            darkSwitch.addEventListener('change', () => {
+                resetTheme();
+            });
+        }
+    });
+
+    function initTheme() {
+        const darkThemeSelected =
+            localStorage.getItem('darkSwitch') !== null &&
+            localStorage.getItem('darkSwitch') === 'dark';
+        darkSwitch.checked = darkThemeSelected;
+        darkThemeSelected ? setTheme(1) : setTheme(0);
+    }
+
+    function setTheme(dark) {
+        if (dark) {
+            $("body").removeClass("bootstrap");
+            $("body").addClass("bootstrap-dark");
+        } else {
+            $("body").addClass("bootstrap");
+            $("body").removeClass("bootstrap-dark");
+        }
+    }
+
+    function resetTheme() {
+        if (darkSwitch.checked) {
+            setTheme(1);
+            localStorage.setItem('darkSwitch', 'dark');
+        } else {
+            setTheme(0);
+            localStorage.removeItem('darkSwitch');
+        }
+    }
+</script>
+
+</html>
