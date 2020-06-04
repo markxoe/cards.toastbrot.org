@@ -1,5 +1,5 @@
 <?php
-include("class_sql.php");
+include("functions.php");
 //require_once("class_sql.php");
 ?>
 
@@ -16,6 +16,7 @@ include("class_sql.php");
         <div class="container-fluid p-5">
             <h1>Toastbrot.org Karten</h1>
             <h2>NFC Karten oder short-link um Links für Social Media oder andere zu Teilen</h2>
+            <?php echo $isloggedin; ?>
         </div>
 
         <?php include("footer.php"); ?>

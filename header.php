@@ -6,13 +6,14 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
         </ul>
+        <?php if(! $isloggedin){?>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <div class="nav-link">
-                    <a href="#" class="btn btn-outline-secondary">Login</a>
+                    <a href="/login.php" class="btn btn-outline-secondary">Login</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -21,5 +22,14 @@
                 </div>
             </li>
         </ul>
+        <?php }else{ ?>
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div class="nav-link">
+                    <a href="/logout.php" class="btn btn-outline-success">Logout</a>
+                </div>
+            </li>
+        </ul>
+        <?php }?>
     </div>
 </nav>

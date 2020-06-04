@@ -25,8 +25,57 @@ class sqlclass {
         $result = $this->mysqli->query($q);
         return $result;
     }
+    public function userGet($byvalue, $by="username"){
+        $q = "SELECT * FROM users WHERE $by = '$byvalue'";
+        $r = $this->mysqli->query($q);
+        if($r->num_rows == 1){
+            return $r->fetch_assoc();
+        }else{
+            return null;
+        }
+    }
+    public function userExist($byvalue, $by="username"){
+        $q = "SELECT * FROM users WHERE $by = '$byvalue'";
+        $r = $this->mysqli->query($q);
+        return $r->num_rows==1;
+    }
 
     // SESSION Functions
+    public function sessionAdd($sessionid,$userid,$duration=3600){
+        $destroy = time()+$duration;
+        $q = "INSERT INTO sessions (id,id_user,destroy) VALUES ('$sessionid',$userid,$destroy)";
+        $result = $this->mysqli->query($q);
+        return $result;
+    }
+    public function sessionGet($sessionid){
+        $q = "SELECT * FROM sessions WHERE id = '$sessionid'";
+        $r = $this->mysqli->query($q);
+        if($r->num_rows == 1){
+            return $r->fetch_assoc();
+        }else{
+            return null;
+        }
+    }
+    public function sessionList($onlyEpired=false){
+        $time = time();
+        if($onlyEpired){
+            $q = "SELECT * FROM sessions WHERE destroy < $time";
+        }else{
+            $q = "SELECT * FROM sessions";
+        }
+        $r = $this->mysqli->query($q);
+        return $r->fetch_all(MYSQLI_ASSOC);
+    }
+    public function sessionExist($sessionid){
+        $q = "SELECT * FROM sessions WHERE id = '$sessionid'";
+        $r = $this->mysqli->query($q);
+        return $r->num_rows==1;
+    }
+    public function sessionDelete($sessionid){
+        $q = "DELETE FROM sessions WHERE id = '$sessionid'";
+        $r = $this->mysqli->query($q);
+        return $r;
+    }
     public function __destruct(){
         $this->mysqli->close();
     }

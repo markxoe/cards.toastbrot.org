@@ -1,7 +1,5 @@
 <?php
-include("class_sql.php");
-include("class_login.php");
-$errorlist = array("2"=>"Fehlende Felder")
+include("functions.php");
 ?>
 <html>
 
@@ -29,7 +27,7 @@ $errorlist = array("2"=>"Fehlende Felder")
                                     <h1>Registrierung</h1>
                                     <a>Registriere dich!</a><br>
                                     <a>Du hast schon einen Account?</a><br>
-                                    <a href="#">Dann melde dich doch an</a>
+                                    <a href="/login.php">Dann melde dich doch an</a>
                                 </div>
                             </div>
                         </div>
