@@ -39,6 +39,19 @@ class sqlclass {
         $r = $this->mysqli->query($q);
         return $r->num_rows==1;
     }
+    public function userEdit($username, $row, $value){
+        $row=$this->rasiax($row);
+        $value=$this->rasiax($value);
+        $username=$this->rasiax($username);
+        $q = "UPDATE users SET `$row` = '$value' WHERE username = '$username'";
+        $r = $this->mysqli->query($q);
+        return $r->num_rows==1;
+    }
+    public function userList(){
+        $q = "SELECT * FROM users";
+        $r = $this->mysqli->query($q);
+        return $r->fetch_all(MYSQLI_ASSOC);
+    }
 
     // SESSION Functions
     public function sessionAdd($sessionid,$userid,$duration=3600){

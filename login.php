@@ -1,5 +1,10 @@
 <?php
 include("functions.php");
+$sitename="Login";
+if($login->verify()){
+    header("location: /");
+    die();
+}
 ?>
 <html>
 
@@ -53,7 +58,7 @@ include("functions.php");
             </div>
         </div>
 
-        <?php include("footer.php"); ?>
+        <?php //include("footer.php"); ?>
 
     </body>
 

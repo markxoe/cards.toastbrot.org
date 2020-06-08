@@ -12,11 +12,11 @@ if ($firstname && $lastname && $username && $_POST["password"]) {
         if ($r != 1) {
             header("location: /register.php?error=1");
         } else {
-            $login->login($sql->userGet($username));
+            $login->login($sql->userGet($username)["id"]);
             header("location: /");
         }
     } else {
-        header("location: /register.php?error=10");
+        header("location: /register.php?error=5");
     }
 } else {
     header("location: /register.php?error=2");

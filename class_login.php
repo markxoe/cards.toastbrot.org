@@ -36,6 +36,15 @@ class loginclass{
         return 0;
     }
 
+    public function getUsername(){
+        if($this->verify()){
+            $sessionid = $_COOKIE["sessionID"];
+            return $this->sql->userGet($this->sql->sessionGet($sessionid)["id_user"],"id")["username"];
+        }else{
+            return "";
+        }
+    }
+
     private function idGen(){
         $id=date("Y-m-d H:i:s",time()); // GENERIERE DATUM STRING
         $id=md5($id.base64_decode(random_bytes(100))); // MACHE EINEN MD5 HASH AUS DATUM UND RANDOM STRING

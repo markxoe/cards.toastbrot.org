@@ -1,5 +1,9 @@
 <?php
 include("functions.php");
+if($login->verify()){
+    header("location: /");
+    die();
+}
 ?>
 <html>
 
@@ -36,18 +40,18 @@ include("functions.php");
                                 <div class="card-body">
                                     <form class="m-0 p-0" method="post" action="register.callback.php">
                                         <div class="form-group">
-                                            <input type="text" name="firstname" placeholder="Name" class="form-control">
+                                            <input required type="text" name="firstname" placeholder="Vorname" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="lastname" placeholder="Nachname (optional)"
+                                            <input required type="text" name="lastname" placeholder="Nachname"
                                                 class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="username" placeholder="Username"
+                                            <input required type="text" name="username" placeholder="Username"
                                                 class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" placeholder="Passwort"
+                                            <input required type="password" name="password" placeholder="Passwort"
                                                 class="form-control">
                                         </div>
                                         <button type="submit" class="btn btn-secondary">Registrieren</button>
@@ -90,7 +94,7 @@ include("functions.php");
             </div>
         </div>
 
-        <?php include("footer.php"); ?>
+        <?php //include("footer.php"); ?>
 
     </body>
 
